@@ -1,6 +1,5 @@
 import sys
 import jieba
-
 from sys import argv
 
 #建立停用词库
