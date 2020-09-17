@@ -3,16 +3,18 @@ import jieba
 
 from sys import argv
 
-
+#建立停用词库
 def stopwordslist():
     stopwords = [line.strip() for line in open('D:\study\sim_0.8\stopwords.txt', encoding='UTF-8').readlines()]
     return stopwords
 
+#进行jieba分词
 def jieba_list(text):
     items = ""
     s = ""
     stopwords = stopwordslist()
     for i in range(0, len(text)):
+        #将中文保存
         if '\u4e00' <= text[i] <= '\u9fff':
             if text[i] not in stopwords:
                 s += text[i]
@@ -24,6 +26,8 @@ def jieba_list(text):
         items += s
         s = ""
     # print(items)
+    
+    #使用精确模式进行分词
     test_items = jieba.lcut(items, cut_all=True)
     return test_items
 
